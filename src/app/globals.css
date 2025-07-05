@@ -1,5 +1,25 @@
 @import "tailwindcss";
 
+/* styles/globals.css */
+.ce-block h1 {
+  font-size: 2rem; /* Tailwind: text-3xl */
+  font-weight: bold;
+  margin: 1rem 0 0.5rem;
+}
+
+.ce-block h2 {
+  font-size: 1.5rem; /* Tailwind: text-2xl */
+  font-weight: semibold;
+  margin: 1rem 0 0.5rem;
+}
+
+.ce-block h3 {
+  font-size: 1.25rem; /* Tailwind: text-xl */
+  font-weight: medium;
+  margin: 1rem 0 0.5rem;
+}
+
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -12,7 +32,7 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
