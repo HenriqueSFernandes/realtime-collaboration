@@ -3,27 +3,34 @@ import "@blocknote/core/fonts/inter.css";
 import { useCreateBlockNote } from "@blocknote/react";
 import { BlockNoteView } from "@blocknote/shadcn";
 import "@blocknote/shadcn/style.css";
-import { WebsocketProvider } from "y-websocket";
 import * as Y from "yjs";
+import { WebsocketProvider } from "y-websocket";
 
-// Our <Editor> component we can reuse later
-export default function Editor() {
-  // Creates a new editor instance.
+interface EditorProps {
+  roomId: string;
+  websocketUrl: string;
+  userName: string;
+}
+
+export default function Editor({
+  roomId,
+  websocketUrl,
+  userName,
+}: EditorProps) {
   const doc = new Y.Doc();
-  const provider = new WebsocketProvider("ws://localhost:1234", "temp", doc);
+  const provider = new WebsocketProvider(websocketUrl, roomId, doc);
 
   const editor = useCreateBlockNote({
     collaboration: {
       provider,
       fragment: doc.getXmlFragment("document-store"),
       user: {
-        name: "Ricky",
+        name: userName,
         color: "#ff0000",
       },
       showCursorLabels: "activity",
     },
   });
 
-  // Renders the editor instance using a React component.
   return <BlockNoteView editor={editor} />;
 }

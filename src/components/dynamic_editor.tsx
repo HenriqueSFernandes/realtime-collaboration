@@ -2,4 +2,7 @@
 
 import dynamic from "next/dynamic";
 
-export const Editor = dynamic(() => import("./editor"), { ssr: false });
+export const Editor = dynamic(() => import("./editor"), {
+  ssr: false,
+  loading: () => <p>Loading...</p>,
+});
