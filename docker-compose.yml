@@ -1,0 +1,16 @@
+services:
+  websocket:
+    image: lakhoune/yjs-websocket
+    ports:
+      - "1234:1234"
+    environment:
+      HOST: 0.0.0.0
+      PORT: 1234
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    restart: always
+    environment:
+      NODE_ENV: production
+    
